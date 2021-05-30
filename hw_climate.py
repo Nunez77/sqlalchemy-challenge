@@ -69,7 +69,7 @@ def precipitation():
 def stations():
     """Returns a list of stations"""
      # Query results to a Dictionary using `date` as the key and `prcp` as the value
-    station_query = session.query(Station.name, Station.station)
+    station_query = session.query(Stations.name, Stations.station)
     station = pd.read_sql(station_query.statement, station_query.session.bind)
     session.commit()
     time.sleep(2) 
@@ -102,7 +102,7 @@ def startDateOnly(date):
 
     # Convert list of tuples into normal list
     return jsonify(day_temp_results)
-    
+
 #################################################
 
 @app.route("/api/v1.0/<start>/<end>")
